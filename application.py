@@ -1,11 +1,12 @@
 # dependencies
+from config import connect_string
 from BellyButtonData import BellyButtonData
 from flask import Flask, jsonify, render_template
 
 #################################################
 # Database Setup
 #################################################
-data = BellyButtonData("sqlite:///belly_button.db")
+data = BellyButtonData(connect_string)
 
 #################################################
 # Flask Setup

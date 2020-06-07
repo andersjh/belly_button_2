@@ -67,6 +67,7 @@ class BellyButtonData():
             results = session.query(self.TestResults).filter_by(subject_id = subj_id)    
             
         df = pd.read_sql(results.statement, session.connection())
+        df = df.sort_values(by='amount', ascending=False)
 
         session.close()  
         return df.to_dict(orient="records")    
