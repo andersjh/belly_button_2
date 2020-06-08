@@ -1,12 +1,16 @@
 # dependencies
-from config import connect_string
+from config import database, connect_string
 from BellyButtonData import BellyButtonData
+from BellyButtonMongo import BellyButtonMongo
 from flask import Flask, jsonify, render_template
 
 #################################################
 # Database Setup
 #################################################
-data = BellyButtonData(connect_string)
+if database == "mongo":
+    data = BellyButtonMongo()
+else:    
+    data = BellyButtonData()
 
 #################################################
 # Flask Setup
@@ -40,8 +44,8 @@ def get_all_ids():
     return jsonify(data.get_subject_ids())
 
 @app.route("/api/v1.0/info")
-def get_all_user_results():
-    return jsonify(data.get_data_by_user())    
+def get_all_results():
+    return jsonify(data.get_data_for_all())    
 
 @app.route("/api/v1.0/info/<subject_id>")
 def get_one_user_results(subject_id):

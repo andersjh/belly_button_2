@@ -6,9 +6,11 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, inspect, join, outerjoin, MetaData, Table
 
+from config import connect_string
+
 class BellyButtonData():
 
-    def __init__(self, connect_string):
+    def __init__(self):
         self.engine = create_engine(connect_string)
         # self.conn = self.engine.connect()
         self.connect_string = connect_string
@@ -74,13 +76,28 @@ class BellyButtonData():
 
     def get_data_by_user(self, subj_id=940):
         return {
+            '_id': subj_id,
             'user': self.get_subjects(subj_id)[0],
             'results': self.get_test_results(subj_id)
-        }               
+        }     
+
+    def get_data_for_all(self):
+        total_data = []
+        subjects = self.get_subjects()
+        num_records = len(subjects)
+        for i in range(num_records):
+            cur_subj = subjects[i]['id']
+            total_data.append({
+                '_id': cur_subj,
+                'user': subjects[i],
+                'results': self.get_test_results(cur_subj)                
+            })
+        return total_data    
+
 
 
 if __name__ == '__main__':
-    info = BellyButtonData("sqlite:///belly_button.db")
+    info = BellyButtonData()
     info.display_db_info()
     print("\nSubject IDs\n", info.get_subject_ids())
     print("\nsubject 1286:\n", info.get_subjects(1286))
