@@ -1,5 +1,5 @@
 
-databaase = "sqlite"
+database = "sqlite"
 # database = "mssql"
 # database = "mongo"
 # database = "postgres"
