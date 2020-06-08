@@ -1,8 +1,3 @@
-mongodb+srv://andersjh1120:<password>@clustertutorials-kgmhg.mongodb.net/test
-
-mssql:  button-mssql-1.cf4cwcugjo7m.us-east-2.rds.amazonaws.com 1433
-postgres: button-gpres-1.cf4cwcugjo7m.us-east-2.rds.amazonaws.com 5432
-
 
 CREATE TABLE "otu_reference" (
 "id" INTEGER NOT NULL,

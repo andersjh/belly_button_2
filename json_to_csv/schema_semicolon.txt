@@ -1,0 +1,43 @@
+
+CREATE TABLE "otu_reference" (
+"id" INTEGER NOT NULL,
+"name" TEXT,
+PRIMARY KEY("id")
+)
+go
+
+CREATE TABLE "subjects" (
+"id" INTEGER NOT NULL UNIQUE,
+"ethnicity" TEXT,
+"gender" TEXT,
+"age" REAL,
+"location" TEXT,
+"bbtype" TEXT,
+"wfreq" TEXT,
+"city" TEXT,
+"state" TEXT,
+PRIMARY KEY("id")
+)
+;
+
+CREATE TABLE "test_data" (
+"subject_id" INTEGER NOT NULL,
+"original_sequence" INTEGER NOT NULL,
+"otu_id" INTEGER NOT NULL,
+"amount" INTEGER,
+FOREIGN KEY("subject_id") REFERENCES "subjects"("id"),
+PRIMARY KEY("subject_id","original_sequence")
+)
+;
+
+
+
+CREATE VIEW test_results_view
+as
+select td.subject_id, td.original_sequence,
+td.otu_id,
+o.name,
+td.amount
+FROM test_data td
+join otu_reference o on o.id = td.otu_id
+;
