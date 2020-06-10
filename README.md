@@ -11,6 +11,7 @@
 - Working api links page
 - Web and Flask folder structure
 - Independent data processing file that is plugged into Flask
+- Connections added for postgres, mssql and mongo
 
 ### This repository will be the basis for another AWS Demo
 
