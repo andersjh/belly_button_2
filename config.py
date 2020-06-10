@@ -1,8 +1,8 @@
 
-# database = "sqlite"
+database = "sqlite"
 # database = "mssql"
 # database = "mongo"
-database = "postgres"
+# database = "postgres"
 
 connect_string = ""
 
