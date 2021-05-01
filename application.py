@@ -1,7 +1,10 @@
 # dependencies
 from config import database, connect_string
-from BellyButtonData import BellyButtonData
+# relational database class with our data retrieval functions
+from BellyButtonData import BellyButtonData 
+# mongodb database class with the same function signitures ( same functions)
 from BellyButtonMongo import BellyButtonMongo
+
 from flask import Flask, jsonify, render_template
 
 #################################################
