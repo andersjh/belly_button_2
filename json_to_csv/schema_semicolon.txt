@@ -4,7 +4,7 @@ CREATE TABLE "otu_reference" (
 "name" TEXT,
 PRIMARY KEY("id")
 )
-go
+;
 
 CREATE TABLE "subjects" (
 "id" INTEGER NOT NULL UNIQUE,
